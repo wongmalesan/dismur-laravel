@@ -31,3 +31,11 @@ Route::post('/kategori/simpan', 'kategori_produkController@save_add_kategori');
 Route::get('/kategori/edit/{id}', 'kategori_produkController@edit_kategori');
 Route::put('/kategori/update/{id}', 'kategori_produkController@save_update_kategori');
 Route::get('/kategori/hapus/{id}', 'kategori_produkController@hapus');
+
+//CRUD Merchant
+Route::get('/merchant', 'merchantController@index');
+Route::get('/merchant/tambah', 'merchantController@add');
+Route::post('/merchant/simpan', 'merchantController@save_add');
+Route::get('/merchant/edit/{id}', 'merchantController@edit');
+Route::put('/merchant/update/{id}', 'merchantController@save_update');
+Route::get('/merchant/hapus/{id}', 'merchantController@hapus');
