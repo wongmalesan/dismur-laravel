@@ -22,10 +22,22 @@ Route::post('login', 'LoginController@check_login');
 Route::get('dashboardmerchant', 'dashboardMerchantController@index');
 
 //Admin
-Route::get('admin', 'adminController@index');
+Route::get('/admin', 'adminController@index');
+Route::get('/admin/merchant', 'adminController@get_merchant');
+Route::get('/admin/merchant/tambahMerchant', 'adminController@add_merchant');
+Route::post('/admin/merchant/tambahMerchant/simpan', 'adminController@proses_add_merchant');
+Route::get('/admin/merchant/editMerchant/{id}', 'adminController@edit_merchant');
+Route::put('/admin/merchant/editMerchant/update/{id}', 'adminController@proses_update_merchant');
+Route::get('/admin/merchant/hapusMerchant/{id}', 'adminController@hapus_merchant');
+//====produk
+Route::get('/admin/produk', 'adminController@get_produk');
+Route::get('/admin/produk/tambahProduk', 'adminController@add_produk');
+Route::post('/admin/produk/tambahProduk/simpan', 'adminController@proses_add_produk');
+
+
 
 //CRUD Kategori
-Route::get('kategori', 'kategori_produkController@index');
+Route::get('/kategori', 'kategori_produkController@index');
 Route::get('/kategori/tambah', 'kategori_produkController@add_kategori');
 Route::post('/kategori/simpan', 'kategori_produkController@save_add_kategori');
 Route::get('/kategori/edit/{id}', 'kategori_produkController@edit_kategori');
@@ -39,3 +51,7 @@ Route::post('/merchant/simpan', 'merchantController@save_add');
 Route::get('/merchant/edit/{id}', 'merchantController@edit');
 Route::put('/merchant/update/{id}', 'merchantController@save_update');
 Route::get('/merchant/hapus/{id}', 'merchantController@hapus');
+
+//Testing
+Route::get('/test', 'testingController@Testing');
+Route::post('/testpost', 'testingController@TestingPost');

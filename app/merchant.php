@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class merchant extends Model
 {
     protected $table =  "merchants";
-    protected $fillable = ['nama_merchant', 'alamat_merchant'];
+    protected $fillable = ['id_merchant', 'nama_merchant', 'alamat_merchant', 'map_location', 'logo'];
     protected $primaryKey = 'id_merchant';
     public $incrementing = false;
 
@@ -33,11 +33,13 @@ class merchant extends Model
 
     public function stores($request)
     {
+        $id_merchant = $this->generateIdMerchant();
         merchant::create([
-            'id_logo_merchant' => $request->id_kategori,
+            'id_merchant' => $id_merchant,
             'nama_merchant' => $request->nama_merchant,
             'alamat_merchant' => $request->alamat_merchant,
             'map_location' => $request->map_location,
+            'logo' => $request->logo,
         ]);
     }
 
@@ -52,6 +54,13 @@ class merchant extends Model
         $merchant = merchant::find($id);
         $merchant->nama_merchant = $request->nama_merchant;
         $merchant->save();
+    }
+
+    public function generateIdMerchant(){
+        $last_id_merchant = merchant::all()->last();
+        $split = substr($last_id_merchant->id_merchant, '1');
+        $new_id = 'M'.($split+1);
+        return $new_id;
     }
 }
 

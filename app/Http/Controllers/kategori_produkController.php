@@ -30,7 +30,8 @@ class kategori_produkController extends Controller
     public function hapus($id){
         $kategori = new kategori_produk();
         $kategori->delete_kategori($id);
-        return redirect('kategori');
+        //return redirect('kategori');
+        return redirect('/admin/produk');
     }
 
     public function save_add_kategori(Request $request){
@@ -42,7 +43,8 @@ class kategori_produkController extends Controller
         ]);
 
         $kategori->store_kategori($request);
-        return redirect('kategori'); // -> kembali ke index kategori_produkController
+        //return redirect('kategori'); // -> kembali ke index kategori_produkController
+        return redirect('/admin/produk');
     }
 
     public function save_update_kategori($id, Request $request){
@@ -53,6 +55,7 @@ class kategori_produkController extends Controller
         ]);
 
         $kategori-> update_kategori($id, $request);
-        return redirect('kategori'); // -> kembali ke index kategori_produkController
+        //return redirect('kategori'); // -> kembali ke index kategori_produkController
+        return redirect('/admin/produk');
     }
 }

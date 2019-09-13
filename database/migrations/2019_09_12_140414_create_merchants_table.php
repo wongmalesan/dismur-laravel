@@ -19,6 +19,7 @@ class CreateMerchantsTable extends Migration
             $table->string('nama_merchant', 50);
             $table->string('alamat_merchant');
             $table->string('map_location');
+            $table->string('logo');
             $table->timestamps();
         });
     }

@@ -31,14 +31,14 @@ class LoginController extends Controller
         //     return "Gagal Login";
         // }
 
-        $data = ["title" => "hello", "description" => "test test test"];
-        $this->validate($model,[
-            'username' => 'required',
-            'password' => 'required',
-            'DB' => 'Error',
-        ]);
-        return $model;
-        
+        // $data = ["title" => "hello", "description" => "test test test"];
+        // $this->validate($model,[
+        //     'username' => 'required',
+        //     'password' => 'required',
+        //     'DB' => 'Error',
+        // ]);
+        //return $model;
+        return view('admin');
 
     }  
 }

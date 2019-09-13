@@ -9,7 +9,7 @@ class dashboardMerchantController extends Controller
 {
     //
     public function index(){
-        $merchant = DB::table('merchant')->get();
+        $merchant = DB::table('merchants')->get();
         return view('dashboard-merchant', ['merchant' => $merchant[0]]);
     }
 }
