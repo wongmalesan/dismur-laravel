@@ -3,7 +3,7 @@
 
 <!-- isi bagian judul halaman -->
 <!-- cara penulisan isi section yang pendek -->
-@section('judul_halaman', 'Dashboard Admin')
+@section('judul_halaman', 'Tambah Produk')
 
 
 <!-- isi bagian konten -->
@@ -14,7 +14,7 @@
     <div class="card mt-5">
         <div class="card-body">
             <form method="post" action="/admin/produk/tambahProduk/simpan">
-            <!-- <form method="post" action="/testpost"> -->
+                <!-- <form method="post" action="/testpost"> -->
                 {{ csrf_field() }}
 
                 <!-- <div class="form-group">
@@ -30,7 +30,7 @@
                 </div> -->
 
                 <div class="form-group">
-                    <label>Nama Produk</label>
+                    <label>Nama Produk*</label>
                     <input type="text" name="nama_produk" class="form-control" placeholder="Nama Produk ..">
 
                     @if($errors->has('nama_produk'))
@@ -65,8 +65,19 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Diskon</label>
-                    <input type="text" name="diskon" class="form-control" placeholder="Add Diskon">
+                    <label>Harga*</label>
+                    <input type="number" name="harga" class="form-control" placeholder="harga">
+
+                    @if($errors->has('harga'))
+                    <div class="text-danger">
+                        {{ $errors->first('harga')}}
+                    </div>
+                    @endif
+                </div>
+
+                <div class="form-group">
+                    <label>Diskon(%)</label>
+                    <input type="number" name="diskon" class="form-control" placeholder="Add Diskon">
 
                     @if($errors->has('diskon'))
                     <div class="text-danger">
@@ -76,7 +87,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Kategori Produk</label>
+                    <label>Kategori Produk*</label>
                     <select class="form-control" name="kategori_produk">
                         <option value="audi" selected disabled>Select Kategori</option>
                         @foreach($k as $krow)
@@ -87,6 +98,17 @@
                     @if($errors->has('kategori_produk'))
                     <div class="text-danger">
                         {{ $errors->first('kategori_produk')}}
+                    </div>
+                    @endif
+                </div>
+
+                <div class="form-group">
+                    <label>Gambar Produk*</label>
+                    <input type="text" name="foto_produk" class="form-control" placeholder="Choose Image ..">
+
+                    @if($errors->has('foto_produk'))
+                    <div class="text-danger">
+                        {{ $errors->first('foto_produk')}}
                     </div>
                     @endif
                 </div>

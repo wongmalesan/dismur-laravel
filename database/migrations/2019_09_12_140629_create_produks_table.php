@@ -19,9 +19,11 @@ class CreateProduksTable extends Migration
             $table->dateTime('tanggal_input');
             $table->date('event_begin')->nullable();
             $table->date('event_end')->nullable();
+            $table->integer('harga');
             $table->integer('diskon')->nullable();
             $table->string('id_user');
             $table->string('id_kategori');
+            $table->string('foto_produk');
             $table->timestamps();
         });
     }

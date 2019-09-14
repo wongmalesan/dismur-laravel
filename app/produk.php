@@ -8,7 +8,7 @@ class produk extends Model
 {
     //
     protected $table =  "produks";
-    protected $fillable = ['id_produk', 'nama_produk', 'tanggal_input', 'event_begin', 'event_end', 'diskon', 'id_user', 'id_kategori'];
+    protected $fillable = ['id_produk', 'nama_produk', 'tanggal_input', 'event_begin', 'event_end', 'harga', 'diskon', 'id_merchant', 'id_kategori', 'foto_produk'];
     protected $primaryKey = 'id_produk';
     public $incrementing = false;
 
@@ -34,11 +34,13 @@ class produk extends Model
             'id_produk' => $id, // generateProduk
             'nama_produk' => $request->nama_produk,
             'tanggal_input' => now(),
-            'even_begin' => $request->event_begin,
-            'even_end' => $request->event_end,
+            'event_begin' => $request->event_begin,
+            'event_end' => $request->event_end,
+            'harga' => $request->harga,
             'diskon' => $request->diskon,
-            'id_user' => '000', // id login user
-            'id_kategori' => $request->kategori_produk
+            'id_merchant' => '000', // id login user
+            'id_kategori' => $request->kategori_produk,
+            'foto_produk' => ''
         ]);
     }
 
@@ -51,9 +53,17 @@ class produk extends Model
     public function updates($id, $request)
     {
         $p = produk::find($id);
+        $p->nama_produk = $request->nama_produk;
+        $p->tanggal_input = now();
+        $p->event_begin = $request->event_begin;
+        $p->event_end = $request->event_end;
+        $p->harga = $request->harga;
         $p->diskon = $request->diskon;
-        $p->tanggal_input = now()->timestamp;
+        $p->id_merchant = 'iduser';
+        $p->id_kategori = $request->kategori_produk;
+        $p->foto_produk = $request->foto_produk;
         $p->save();
+        //return $request->id_kategori;
     }
 
     public function generateIdProduk(){

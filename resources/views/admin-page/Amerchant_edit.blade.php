@@ -3,7 +3,7 @@
 
 <!-- isi bagian judul halaman -->
 <!-- cara penulisan isi section yang pendek -->
-@section('judul_halaman', 'Dashboard Admin')
+@section('judul_halaman', 'Edit Merchant')
 
 
 <!-- isi bagian konten -->
@@ -13,25 +13,14 @@
 <div class="container">
     <div class="card mt-5">
         <div class="card-body">
-            <form method="post" action="/admin/merchant/tambahMerchant/simpan">
+            <form method="post" action="/admin/merchant/editMerchant/update/{{ $m->id_merchant }}">
 
                 {{ csrf_field() }}
-
-                <!-- <div class="form-group">
-                    <label>id_kategori</label>
-                    <input type="text" name="id_kategori" class="form-control" placeholder="id Kategori ..">
-
-                    @if($errors->has('id_kategori'))
-                    <div class="text-danger">
-                        {{ $errors->first('id_kategori')}}
-                    </div>
-                    @endif
-
-                </div> -->
+                {{ method_field('PUT') }}
 
                 <div class="form-group">
                     <label>Nama Merchant</label>
-                    <input type="text" name="nama_merchant" class="form-control" placeholder="Nama Merchant ..">
+                    <input type="text" name="nama_merchant" class="form-control" value="{{ $m->nama_merchant }}">
 
                     @if($errors->has('nama_merchant'))
                     <div class="text-danger">
@@ -42,7 +31,9 @@
 
                 <div class="form-group">
                     <label>Alamat Merchant</label>
-                    <textarea name="alamat_merchant" class="form-control" placeholder="Alamat Merchant .."></textarea>
+                    <textarea name="alamat_merchant" class="form-control">
+                    {{ $m->alamat_merchant }}
+                    </textarea>
 
                     @if($errors->has('alamat_merchant'))
                     <div class="text-danger">
@@ -53,7 +44,7 @@
 
                 <div class="form-group">
                     <label>Map Location</label>
-                    <input type="text" name="map_location" class="form-control" placeholder="URL Map Location ..">
+                    <input type="text" name="map_location" class="form-control" value="{{ $m->map_location }}">
 
                     @if($errors->has('map_location'))
                     <div class="text-danger">
@@ -64,11 +55,11 @@
 
                 <div class="form-group">
                     <label>Logo</label>
-                    <input type="text" name="logo_merchant" class="form-control" placeholder="Choose Image ..">
+                    <input type="text" name="logo" class="form-control" value="{{ $m->logo }}">
 
-                    @if($errors->has('logo_merchant'))
+                    @if($errors->has('logo'))
                     <div class="text-danger">
-                        {{ $errors->first('logo_merchant')}}
+                        {{ $errors->first('logo')}}
                     </div>
                     @endif
                 </div>

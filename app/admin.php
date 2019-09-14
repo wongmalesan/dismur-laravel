@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class admin extends Model
 {
     protected $table =  "admins";
-    protected $fillable = ['id_admin', 'nama_admin', 'email_admin'];
+    protected $fillable = ['id_admin', 'nama_admin', 'email_admin','alamat_admin','telepon_admin'];
     protected $primaryKey = 'id_admin';
     public $incrementing = false;
 
-    public function get_admin()
+    public function get_all()
     {
         return admin::all();
     }
@@ -21,31 +21,46 @@ class admin extends Model
     //     return admin::where('id_admin', 'P0')->get();
     // }
 
-    public function search_admin($ids)
+    public function searchs($ids)
     {
-        return admin::find($ids);;
+        return admin::find($ids);
     }
 
-    public function store_admin($request)
+    public function stores($request)
     {
+        $id = $this->generateId();
         admin::create([
-            'id_admin' => $request->id_admin,
+            'id_admin' => $id,
             'nama_admin' => $request->nama_admin,
             'email_admin' => $request->email_admin,
+            'alamat_admin' => $request->alamat_admin,
+            'telepon_admin' => $request->telepon_admin
         ]);
     }
 
-    public function delete_admin($id)
+    public function deletes($id)
     {
-        $kategori = admin::find($id);
-        $kategori->delete();
+        $res = admin::find($id);
+        $res->delete();
     }
 
-    public function update_admin($id, $request)
+    public function updates($id, $request)
     {
-        $kategori = admin::find($id);
-        $kategori->nama_admin = $request->nama_admin;
-        $kategori->email_admin = $request->email_admin;
-        $kategori->save();
+        $res = admin::find($id);
+        $res->nama_admin = $request->nama_admin;
+        $res->email_admin = $request->email_admin;
+        $res->alamat_admin = $request->alamat_admin;
+        $res->telepon_admin = $request->telepon_admin;
+        $res->save();
+    }
+
+    public function generateId(){
+        $last_id = admin::all()->last();
+        $lastNumber = 0;
+        if($last_id != null){
+            $lastNumber = substr($last_id->id_admin, '2');
+        }
+        $new_id = 'AD'.($lastNumber + 1 );
+        return $new_id;
     }
 }

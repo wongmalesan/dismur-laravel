@@ -39,7 +39,7 @@ class merchant extends Model
             'nama_merchant' => $request->nama_merchant,
             'alamat_merchant' => $request->alamat_merchant,
             'map_location' => $request->map_location,
-            'logo' => $request->logo,
+            'logo' => $request->logo_merchant,
         ]);
     }
 
@@ -53,6 +53,9 @@ class merchant extends Model
     {
         $merchant = merchant::find($id);
         $merchant->nama_merchant = $request->nama_merchant;
+        $merchant->alamat_merchant = $request->alamat_merchant;
+        $merchant->map_location = $request->map_location;
+        $merchant->logo = $request->logo;
         $merchant->save();
     }
 

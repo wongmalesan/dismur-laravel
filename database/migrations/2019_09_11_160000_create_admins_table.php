@@ -17,6 +17,8 @@ class CreateAdminsTable extends Migration
             $table->bigIncrements('id_admin');
             $table->string('nama_admin', 50);
             $table->string('email_admin', 50)->unique();
+            $table->string('alamat_admin')->nullable();
+            $table->string('telepon_admin', 20)->nullable();
             $table->timestamps();
         });
     }

@@ -29,8 +29,9 @@ class kategori_produk extends Model
 
     public function store_kategori($request)
     {
+        $id = $this->generateId();
         kategori_produk::create([
-            'id_kategori' => $request->id_kategori,
+            'id_kategori' => $id,
             'nama_kategori' => $request->nama_kategori,
         ]);
     }
@@ -46,5 +47,15 @@ class kategori_produk extends Model
         $kategori = kategori_produk::find($id);
         $kategori->nama_kategori = $request->nama_kategori;
         $kategori->save();
+    }
+
+    public function generateId(){
+        $last_id = kategori_produk::all()->last();
+        $lastNumber = 0;
+        if($last_id != null){
+            $lastNumber = substr($last_id->id_kategori, '2');
+        }
+        $new_id = 'KP'.($lastNumber + 1 );
+        return $new_id;
     }
 }

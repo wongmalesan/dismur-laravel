@@ -9,15 +9,21 @@ use App\kategori_produk;
 class kategori_produkController extends Controller
 {
     //
+    private $kategori;
+    public function __construct()
+    {
+        $this->kategori = new kategori_produk();
+    }
+
     public function index(){
-        $kategori = new kategori_produk();
-        return view('kategoriProduk', ['kategori' => $kategori->get_kategori()]);        
+        return view('kategoriProduk', ['kategori' => $this->kategori->get_kategori()]);        
     }
 
     public function add_kategori()
     {
         //generate id_kategori disini
-        return view('kategoriTambah'); //-> pergi ke halaman tambah kategori
+        $id = $this->kategori->generateId();
+        return view('kategoriTambah')->with('id', $id); //-> pergi ke halaman tambah kategori
     }
 
     public function edit_kategori($id)

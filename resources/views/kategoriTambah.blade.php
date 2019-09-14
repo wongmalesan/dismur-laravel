@@ -23,7 +23,7 @@
 
                 <div class="form-group">
                     <label>id_kategori</label>
-                    <input type="text" name="id_kategori" class="form-control" placeholder="id Kategori ..">
+                    <input type="text" name="id_kategori" class="form-control" value="{{$id}}" readonly>
 
                     @if($errors->has('id_kategori'))
                     <div class="text-danger">
@@ -35,7 +35,7 @@
 
                 <div class="form-group">
                     <label>Nama Kategori</label>
-                    <textarea name="nama_kategori" class="form-control" placeholder="Nama Kategori .."></textarea>
+                    <input name="nama_kategori" class="form-control" placeholder="Nama Kategori ..">
 
                     @if($errors->has('nama_kategori'))
                     <div class="text-danger">

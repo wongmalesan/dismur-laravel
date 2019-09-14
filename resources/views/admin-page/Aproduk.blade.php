@@ -3,7 +3,7 @@
 
 <!-- isi bagian judul halaman -->
 <!-- cara penulisan isi section yang pendek -->
-@section('judul_halaman', 'Dashboard Admin')
+@section('judul_halaman', 'Daftar Produk & Kategori Produk')
 
 
 <!-- isi bagian konten -->
@@ -25,9 +25,11 @@
                             <th>Tanggal</th>
                             <th>Event Begin Date</th>
                             <th>Event End Date</th>
+                            <th>Harga</th>
                             <th>Diskon(%)</th>
                             <th>Penambah</th>
                             <th>Kategori</th>
+                            <th>Gambar Produk</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -39,12 +41,14 @@
                             <td>{{ $data->tanggal_input }}</td>
                             <td>{{ $data->event_begin }}</td>
                             <td>{{ $data->event_end }}</td>
+                            <td>{{ $data->harga }}</td>
                             <td>{{ $data->diskon }}</td>
-                            <td>{{ $data->id_user }}</td>
+                            <td>{{ $data->id_merchant }}</td>
                             <td>{{ $data->id_kategori }}</td>
+                            <td>{{ $data->foto_produk }}</td>
                             <td>
-                                <a href="/admin/produk/editProduk/{{ $data->id_produk }}" class="btn btn-warning">Edit</a>
-                                <a href="/admin/produk/hapusProduk/{{ $data->id_produk }}" class="btn btn-danger">Hapus</a>
+                                <a href="/admin/produk/editProduk/{{ $data->id_produk }}" class="btn btn-warning" title="Edit"><i class="fas fa-edit"></i></a>
+                                <a href="/admin/produk/hapusProduk/{{ $data->id_produk }}" class="btn btn-danger" title="Delete"><i class="fas fa-times"></i></a>
                             </td>
                         </tr>
                         @endforeach
@@ -74,8 +78,8 @@
                         <td>{{ $data->id_kategori }}</td>
                         <td>{{ $data->nama_kategori }}</td>
                         <td>
-                            <a href="/kategori/edit/{{ $data->id_kategori }}" class="btn btn-warning">Edit</a>
-                            <a href="/kategori/hapus/{{ $data->id_kategori }}" class="btn btn-danger">Hapus</a>
+                            <a href="/kategori/edit/{{ $data->id_kategori }}" class="btn btn-warning" title="Edit"><i class="fas fa-edit"></i></a>
+                            <a href="/kategori/hapus/{{ $data->id_kategori }}" class="btn btn-danger" title="Delete"><i class="fas fa-times"></i></a>
                         </td>
                     </tr>
                     @endforeach
