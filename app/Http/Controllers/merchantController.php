@@ -5,60 +5,117 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\merchant;
+use App\produk;
+use App\kategori_produk;
 
 class merchantController extends Controller
 {
     //
+    private $merchant;
+    private $produk;
+    private $kategori;
+
+    public function __construct()
+    {
+        $this->merchant = new merchant();
+        $this->produk = new produk();
+        $this->kategori = new kategori_produk();
+    }
+
     public function index()
     {
-        $merchant = new merchant();
-        $id = 0; //get from session login
-        return view('merchant', ['merchant' => $merchant->get_merchant_by_id($id)]);
+        // $id = 'M1'; //get data from session id
+        // $res = $this->merchant->get_merchant_by_id($id);
+        //return view('merchant-page.merchant', ['merchant' => $res[0]]);
+        // return view('merchant-page.merchant')
+        //     ->with('merchant', $res[0]);
+        return view('merchant-page.merchant')
+                ->with('Teknik', 200)
+                ->with('Fisip', 250)
+                ->with('Ekonomi', 100)
+                ->with('Pertanian', 400);
     }
 
-    public function add()
+    #region merchant
+    public function get_profile()
     {
-        //generate id disini
-        return view('merchantTambah'); //-> pergi ke halaman tambah kategori
+        $id = 'M1'; //get data from session id
+        $res = $this->merchant->get_merchant_by_id($id);
+        return view('merchant-page.merchant_profile', ['merchant' => $res[0]]);
     }
 
-    public function edit($id)
+    public function edit_profile($id)
     {
-        $merchant = new merchant();
-        $data = $merchant->searchs($id);
-        return view('merchantEdit', ['merchant' => $data]); //-> pergi ke halaman edit kategori
+        $data = $this->merchant->searchs($id);
+        return view('merchant-page.merchant_edit', ['merchant' => $data]);
     }
 
-    public function hapus($id)
+    public function save_update_profile($id, Request $request)
     {
-        $merchant = new merchant();
-        $merchant->deletes($id);
-        return redirect('merchant');
-    }
-
-    public function save_add(Request $request)
-    {
-        $merchant = new merchant();
-
         $this->validate($request, [
             'nama_merchant' => 'required',
             'alamat_merchant' => 'required'
         ]);
 
-        $merchant->stores($request);
-        return redirect('merchant'); // -> kembali ke index kategori_produkController
+        $this->merchant->updates($id, $request);
+        return redirect('/merchant/profile');
+    }
+    #endregion
+
+    #region Produk
+    public function get_produk()
+    {
+        $id = 'M1'; //get data from session id
+        $res = $this->produk->get_produk_by_id_merchant($id);
+        return view('merchant-page.merchant_produk')->with('senddata', $res);
     }
 
-    public function save_update($id, Request $request)
+    public function add_produk()
     {
-        $merchant = new merchant();
+        $datak = $this->kategori->get_kategori();
+        return view('merchant-page.merchant_produk_add')->with('k', $datak);
+    }
 
+    public function edit_produk($id)
+    {
+        $data = $this->produk->searchs($id);
+        $datak = $this->kategori->search_kategori($data->id_kategori);
+        $datakAll = $this->kategori->get_kategori();
+        return view('merchant-page.merchant_produk_edit')
+                ->with('p', $data)
+                ->with('k', $datak)
+                ->with('kAll', $datakAll);
+    }
+
+    public function save_add_produk(Request $request)
+    {
         $this->validate($request, [
-            'nama_merchant' => 'required',
-            'alamat_merchant' => 'required'
+            'nama_produk' => 'required',
+            'kategori_produk' => 'required',
+            'foto_produk' => 'required'
+        ]);
+        $id = 'M1';
+        $this->produk->Mstores($id, $request);
+        return redirect('/merchant/produk'); // -> kembali ke index kategori_produkController
+    }
+
+    public function save_update_produk($id, Request $request)
+    {
+        $this->validate($request, [
+            'nama_produk' => 'required',
+            'kategori_produk' => 'required',
+            'foto_produk' => 'required'
         ]);
 
-        $merchant->updates($id, $request);
-        return redirect('merchant'); // -> kembali ke index kategori_produkController
+        $idx = 'M1';
+        $this->produk->Mupdates($id, $request, $idx);
+        return redirect('/merchant/produk'); // -> kembali ke index kategori_produkController
     }
+
+    public function hapus_produk($id)
+    {
+        $this->produk->deletes($id);
+        return redirect('/merchant/produk');
+    }
+    #endregion
 }

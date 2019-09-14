@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\member;
+use App\merchant;
 
 class registrasiController extends Controller
 {
@@ -18,7 +20,9 @@ class registrasiController extends Controller
             'password_confirmation' => 'required|min:6',
             'password' => 'confirmed|min:6',
         ]);
-        return $request;
+        $member = new member();
+        $member->stores($request);
+        return $request; ////redirect to dashboard member
     }
 
     public function merchant_index(){
@@ -32,6 +36,8 @@ class registrasiController extends Controller
             'password_confirmation' => 'required|min:6',
             'password' => 'confirmed|min:6',
         ]);
-        return $request;
+        $merchan = new merchant();
+        $merchan->stores($request);
+        return $request; //redirect to dashboard merchant
     }
 }

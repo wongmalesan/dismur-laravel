@@ -67,13 +67,34 @@ Route::get('/kategori/edit/{id}', 'kategori_produkController@edit_kategori');
 Route::put('/kategori/update/{id}', 'kategori_produkController@save_update_kategori');
 Route::get('/kategori/hapus/{id}', 'kategori_produkController@hapus');
 
-//CRUD Merchant
+//Merchant page
 Route::get('/merchant', 'merchantController@index');
-Route::get('/merchant/tambah', 'merchantController@add');
-Route::post('/merchant/simpan', 'merchantController@save_add');
-Route::get('/merchant/edit/{id}', 'merchantController@edit');
-Route::put('/merchant/update/{id}', 'merchantController@save_update');
-Route::get('/merchant/hapus/{id}', 'merchantController@hapus');
+Route::get('/merchant/profile', 'merchantController@get_profile');
+Route::get('/merchant/profile/edit/{id}', 'merchantController@edit_profile');
+Route::put('/merchant/profile/edit/update/{id}', 'merchantController@save_update_profile');
+//-> Produk
+Route::get('/merchant/produk', 'merchantController@get_produk');
+Route::get('/merchant/produk/tambah', 'merchantController@add_produk');
+Route::post('/merchant/produk/tambah/save', 'merchantController@save_add_produk');
+Route::get('/merchant/produk/edit/{id}', 'merchantController@edit_produk');
+Route::put('/merchant/produk/edit/update/{id}', 'merchantController@save_update_produk');
+Route::get('/merchant/produk/hapus/{id}', 'merchantController@hapus_produk');
+
+//Member Page
+Route::get('/member', 'memberController@get_profile');
+Route::get('/member/profile', 'memberController@get_profile');
+Route::get('/member/profile/edit/{id}', 'memberController@edit_profile');
+Route::put('/member/profile/edit/update/{id}', 'memberController@save_update_profile');
+//--> Wishlist
+Route::get('/member/wishlist', 'memberController@get_wishlist');
+
+
+
+// Route::get('/merchant/tambah', 'merchantController@add');
+// Route::post('/merchant/simpan', 'merchantController@save_add');
+
+// Route::put('/merchant/update/{id}', 'merchantController@save_update');
+// Route::get('/merchant/hapus/{id}', 'merchantController@hapus');
 
 //Testing
 Route::get('/test', 'testingController@Testing');

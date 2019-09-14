@@ -22,6 +22,11 @@ class member extends Model
     //     return member::where('id_member', 'P0')->get();
     // }
 
+    public function get_by_id($id)
+    {
+        return member::where('id_member', $id)->get();
+    }
+
     public function searchs($ids)
     {
         return member::find($ids);
