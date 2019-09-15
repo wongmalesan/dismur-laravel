@@ -13,7 +13,7 @@
 <div class="container">
     <div class="card mt-5">
         <div class="card-body">
-            <form method="post" action="/reg/member/simpan">
+            <form method="post" enctype="multipart/form-data" action="/reg/member/simpan">
                 {{ csrf_field() }}
 
                 <div class="form-group">

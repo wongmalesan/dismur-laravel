@@ -34,7 +34,9 @@
                         <td>{{ $Mdata->nama_merchant }}</td>
                         <td>{{ $Mdata->alamat_merchant }}</td>
                         <td>{{ $Mdata->map_location }}</td>
-                        <td>{{ $Mdata->logo }}</td>
+                        <td>
+                            <img width="150px" src="{{ url('/main-asset-dismur/img/merchant/'.$Mdata->logo) }}">
+                        </td>
                         <td>
                             <a href="/admin/merchant/editMerchant/{{ $Mdata->id_merchant }}" class="btn btn-warning" title="Edit"><i class="fas fa-edit"></i></a>
                             <a href="/admin/merchant/hapusMerchant/{{ $Mdata->id_merchant }}" class="btn btn-danger" title="Delete"><i class="fas fa-times"></i></a>

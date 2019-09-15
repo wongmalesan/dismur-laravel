@@ -13,21 +13,8 @@
 <div class="container">
     <div class="card mt-5">
         <div class="card-body">
-            <form method="post" action="/admin/produk/tambahProduk/simpan">
-                <!-- <form method="post" action="/testpost"> -->
+            <form method="post" enctype="multipart/form-data" action="/admin/produk/tambahProduk/simpan">
                 {{ csrf_field() }}
-
-                <!-- <div class="form-group">
-                    <label>id_kategori</label>
-                    <input type="text" name="id_kategori" class="form-control" placeholder="id Kategori ..">
-
-                    @if($errors->has('id_kategori'))
-                    <div class="text-danger">
-                        {{ $errors->first('id_kategori')}}
-                    </div>
-                    @endif
-
-                </div> -->
 
                 <div class="form-group">
                     <label>Nama Produk*</label>
@@ -87,6 +74,22 @@
                 </div>
 
                 <div class="form-group">
+                    <label>Merchant</label>
+                    <select class="form-control" name="id_merchant">
+                        <option selected disabled>Select Merchant</option>
+                        @foreach($merchant as $mrow)
+                        <option id="{{$mrow->id_merchant}}" value="{{$mrow->id_merchant}}">{{$mrow->nama_merchant}}</option>
+                        @endforeach
+                    </select>
+
+                    @if($errors->has('kategori_produk'))
+                    <div class="text-danger">
+                        {{ $errors->first('kategori_produk')}}
+                    </div>
+                    @endif
+                </div>
+
+                <div class="form-group">
                     <label>Kategori Produk*</label>
                     <select class="form-control" name="kategori_produk">
                         <option value="audi" selected disabled>Select Kategori</option>
@@ -104,7 +107,8 @@
 
                 <div class="form-group">
                     <label>Gambar Produk*</label>
-                    <input type="text" name="foto_produk" class="form-control" placeholder="Choose Image ..">
+                    <br>
+                    <input type="file" name="foto_produk">
 
                     @if($errors->has('foto_produk'))
                     <div class="text-danger">

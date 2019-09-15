@@ -13,10 +13,9 @@
 <div class="container">
     <div class="card mt-5">
         <div class="card-body">
-            <form method="post" action="/admin/member/edit/update/{{ $senddata->id_member }}">
+            <form method="post" enctype="multipart/form-data" action="/admin/member/edit/update/{{ $senddata->id_member }}">
 
                 {{ csrf_field() }}
-                {{ method_field('PUT') }}
 
                 <div class="form-group">
                     <label>Nama Member</label>
@@ -41,8 +40,12 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Upload Foto</label>
-                    <input class="form-control" name="foto_member" value="{{ $senddata->foto_member }}">
+                <label>Upload Foto</label>
+                    <br>
+                    <input type="file" name="foto_member" class="mb-2">
+                    <br>
+                    <label>Logo Saat ini</label><br>
+                    <img width="150px" src="{{ url('/main-asset-dismur/img/member/'.$senddata->foto_member) }}">
 
                     @if($errors->has('foto_member'))
                     <div class="text-danger">

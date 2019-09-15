@@ -13,10 +13,9 @@
 <div class="container">
     <div class="card mt-5">
         <div class="card-body">
-            <form method="post" action="/admin/merchant/editMerchant/update/{{ $m->id_merchant }}">
+            <form method="post" enctype="multipart/form-data" action="/admin/merchant/editMerchant/update/{{ $m->id_merchant }}">
 
                 {{ csrf_field() }}
-                {{ method_field('PUT') }}
 
                 <div class="form-group">
                     <label>Nama Merchant</label>
@@ -55,7 +54,11 @@
 
                 <div class="form-group">
                     <label>Logo</label>
-                    <input type="text" name="logo" class="form-control" value="{{ $m->logo }}">
+                    <br>
+                    <input type="file" name="logo_merchant" class="mb-2">
+                    <br>
+                    <label>Logo Saat ini</label><br>
+                    <img width="150px" src="{{ url('/main-asset-dismur/img/merchant/'.$m->logo) }}">
 
                     @if($errors->has('logo'))
                     <div class="text-danger">

@@ -13,21 +13,9 @@
 <div class="container">
     <div class="card mt-5">
         <div class="card-body">
-            <form method="post" action="/admin/merchant/tambahMerchant/simpan">
+            <form method="post" enctype="multipart/form-data" action="/admin/merchant/tambahMerchant/simpan">
 
                 {{ csrf_field() }}
-
-                <!-- <div class="form-group">
-                    <label>id_kategori</label>
-                    <input type="text" name="id_kategori" class="form-control" placeholder="id Kategori ..">
-
-                    @if($errors->has('id_kategori'))
-                    <div class="text-danger">
-                        {{ $errors->first('id_kategori')}}
-                    </div>
-                    @endif
-
-                </div> -->
 
                 <div class="form-group">
                     <label>Nama Merchant</label>
@@ -64,7 +52,8 @@
 
                 <div class="form-group">
                     <label>Logo</label>
-                    <input type="text" name="logo_merchant" class="form-control" placeholder="Choose Image ..">
+                    <br>
+                    <input type="file" name="logo_merchant">
 
                     @if($errors->has('logo_merchant'))
                     <div class="text-danger">

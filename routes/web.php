@@ -21,19 +21,20 @@ Route::post('/login/proses', 'LoginController@check_login');
 
 //==========
 //Admin
+//Merchant
 Route::get('/admin', 'adminController@index');
 Route::get('/admin/merchant', 'adminController@get_merchant');
 Route::get('/admin/merchant/tambahMerchant', 'adminController@add_merchant');
 Route::post('/admin/merchant/tambahMerchant/simpan', 'adminController@proses_add_merchant');
 Route::get('/admin/merchant/editMerchant/{id}', 'adminController@edit_merchant');
-Route::put('/admin/merchant/editMerchant/update/{id}', 'adminController@proses_update_merchant');
+Route::post('/admin/merchant/editMerchant/update/{id}', 'adminController@proses_update_merchant');
 Route::get('/admin/merchant/hapusMerchant/{id}', 'adminController@hapus_merchant');
 //====produk
 Route::get('/admin/produk', 'adminController@get_produk');
 Route::get('/admin/produk/tambahProduk', 'adminController@add_produk');
 Route::post('/admin/produk/tambahProduk/simpan', 'adminController@proses_add_produk');
 Route::get('/admin/produk/editProduk/{id}', 'adminController@edit_produk');
-Route::put('/admin/produk/editProduk/update/{id}', 'adminController@proses_update_produk');
+Route::post('/admin/produk/editProduk/update/{id}', 'adminController@proses_update_produk');
 Route::get('/admin/produk/hapusProduk/{id}', 'adminController@hapus_produk');
 //====Admin
 Route::get('/admin/dataAdmin', 'adminController@get_admin');
@@ -47,8 +48,10 @@ Route::get('/admin/member', 'adminController@get_member');
 Route::get('/admin/member/tambah', 'adminController@add_member');
 Route::post('/admin/member/tambah/simpan', 'adminController@proses_add_member');
 Route::get('/admin/member/edit/{id}', 'adminController@edit_member');
-Route::put('/admin/member/edit/update/{id}', 'adminController@proses_update_member');
+Route::post('/admin/member/edit/update/{id}', 'adminController@proses_update_member');
 Route::get('/admin/member/hapus/{id}', 'adminController@hapus_member');
+//Kategori Produk
+Route::get('/admin/kategori', 'adminController@get_kategori');
 //==========
 
 //Form Registration

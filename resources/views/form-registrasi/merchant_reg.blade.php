@@ -13,7 +13,7 @@
 <div class="container">
     <div class="card mt-5">
         <div class="card-body">
-            <form method="post" action="/reg/merchant/simpan">
+            <form method="post" enctype="multipart/form-data" action="/reg/merchant/simpan">
 
                 {{ csrf_field() }}
 
@@ -74,7 +74,8 @@
 
                 <div class="form-group">
                     <label>Logo</label>
-                    <input type="text" name="logo_merchant" class="form-control" placeholder="Choose Image ..">
+                    <br>
+                    <input type="file" name="logo_merchant">
 
                     @if($errors->has('logo_merchant'))
                     <div class="text-danger">

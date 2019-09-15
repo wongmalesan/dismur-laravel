@@ -13,7 +13,7 @@
 <div class="container">
     <div class="card mt-5">
         <div class="card-body">
-            <form method="post" action="/admin/member/tambah/simpan">
+            <form method="post" enctype="multipart/form-data" action="/admin/member/tambah/simpan">
                 {{ csrf_field() }}
 
                 <div class="form-group">
@@ -40,7 +40,8 @@
 
                 <div class="form-group">
                     <label>Upload Foto</label>
-                    <input class="form-control" name="foto_member">
+                    <br>
+                    <input type="file" name="foto_member" class="mb-2">
 
                     @if($errors->has('foto_member'))
                     <div class="text-danger">

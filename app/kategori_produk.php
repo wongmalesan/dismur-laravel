@@ -14,7 +14,7 @@ class kategori_produk extends Model
 
     public function get_kategori()
     {
-        return kategori_produk::all();
+        return kategori_produk::all()->sortBy('created_at');
     }
 
     public function get_kategori_filter()
@@ -50,7 +50,7 @@ class kategori_produk extends Model
     }
 
     public function generateId(){
-        $last_id = kategori_produk::all()->last();
+        $last_id = kategori_produk::all()->sortBy('created_at')->last();
         $lastNumber = 0;
         if($last_id != null){
             $lastNumber = substr($last_id->id_kategori, '2');

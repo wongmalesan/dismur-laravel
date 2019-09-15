@@ -35,7 +35,9 @@
                         <td>{{ $data->nama_member }}</td>
                         <td>{{ $data->email_member }}</td>
                         <td>{{ $data->tanggal_daftar }}</td>
-                        <td>{{ $data->foto_member }}</td>
+                        <td>
+                            <img width="150px" src="{{ url('/main-asset-dismur/img/member/'.$data->foto_member) }}">
+                        </td>
                         <td>{{ $data->id_referal }}</td>
                         <td>
                             <a href="/admin/member/edit/{{ $data->id_member }}" class="btn btn-warning" title="Edit"><i class="fas fa-edit"></i></a>

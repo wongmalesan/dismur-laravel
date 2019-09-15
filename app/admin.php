@@ -13,7 +13,7 @@ class admin extends Model
 
     public function get_all()
     {
-        return admin::all();
+        return admin::all()->sortBy('created_at');
     }
 
     // public function get_kategori_filter()
