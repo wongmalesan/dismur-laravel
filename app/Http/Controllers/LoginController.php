@@ -6,13 +6,14 @@ use Exception;
 use Illuminate\Http\Request;
 	
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class LoginController extends Controller
 {
     //
-    // public function index(){
-    //     return view('login');
-    // }
+    public function index(){
+        return view('login');
+    }
 
     public function check_login(Request $model){
         // try{
@@ -38,7 +39,7 @@ class LoginController extends Controller
         //     'DB' => 'Error',
         // ]);
         //return $model;
-        return view('admin');
+        return Redirect('/admin');
 
     }  
 }

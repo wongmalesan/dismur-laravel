@@ -1,0 +1,88 @@
+#client .container .row {
+    display: flex;
+}
+
+#client .container .row div {
+    margin: auto;
+}
+
+/* Start ====================================== */
+/* Custom Portofolio */
+/* ====================================== */
+
+#portfolioGrid .portfolio-item i{
+    margin: auto;
+    top: 50%;
+    bottom: 0;
+    position: absolute;
+}
+
+#portfolioGrid .portfolio .portfolio-item img{
+    width: 75% !important;
+    margin: auto;
+}
+
+/* <!-- product-detail css
+===================================== --> */
+
+.shop-item-available > span > ul > li {
+    padding-bottom: 5px;
+}
+
+.shop-item-available span ul li img {
+    height: 50px;
+    width: auto;
+}
+
+.shop-item-detail-cat > a > i{
+    font-size: 3em;
+}
+
+.shop-item-available span strong{
+    color: rgb(233, 67, 67);
+    font-size: large;
+}
+
+#shop_item_additional_information .nav img{
+    height: 3vh;
+}
+
+/* Start ====================================== */
+/* Custom Setting */
+/* ====================================== */
+
+.ds-flex{
+    display: flex;
+}
+
+.m-auto{
+    margin: auto;
+}
+
+/* End ====================================== */
+/* Custom Setting */
+/* ====================================== */
+
+
+/* ====================================== */
+/* Custom main style */
+/* ====================================== */
+
+#ai-product .shop-item-container-out .add-to-cart{
+    width: 100%;
+    position: unset !important;
+    left: 0;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 12.5px;
+}
+
+
+/* .modal-dialog-centered {
+    position: absolute;
+  float: left;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  } */

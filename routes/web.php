@@ -10,16 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+//root
+Route::get('/', 'dismurController@index');
 
-Route::get('/', function () {
-    return view('login');
-});
-// Route::get('/', 'LoginController@index');
-
-Route::post('login', 'LoginController@check_login');
+Route::get('/login', 'LoginController@index');
+Route::post('/login/proses', 'LoginController@check_login');
 
 //Dasboard Merchant
-Route::get('dashboardmerchant', 'dashboardMerchantController@index');
+// Route::get('/dashboardmerchant', 'dashboardMerchantController@index');
 
 //==========
 //Admin

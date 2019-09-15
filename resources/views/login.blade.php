@@ -49,7 +49,7 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
-                                    <form action="/login" method="post" class="user" onSubmit="return validate()">
+                                    <form action="/login/proses" method="post" class="user" onSubmit="return validate()">
                                         {{ csrf_field() }}
                                         <div class="form-group">
                                             <input type="text" name="email" class="form-control form-control-user" id="email" placeholder="Enter Email ...">
