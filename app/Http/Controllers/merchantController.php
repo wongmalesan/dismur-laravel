@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\merchant;
 use App\produk;
 use App\kategori_produk;
+use App\user_dismur;
 
 class merchantController extends Controller
 {
@@ -14,16 +15,21 @@ class merchantController extends Controller
     private $merchant;
     private $produk;
     private $kategori;
+    private $user;
 
     public function __construct()
     {
         $this->merchant = new merchant();
         $this->produk = new produk();
         $this->kategori = new kategori_produk();
+        $this->user = new user_dismur();
     }
 
     public function index()
     {
+        if($this->user->check_login_session_merchant()){
+            return redirect('/login')->withError('Anda Harus Login')->withInput();
+        }
         // $id = 'M1'; //get data from session id
         // $res = $this->merchant->get_merchant_by_id($id);
         //return view('merchant-page.merchant', ['merchant' => $res[0]]);

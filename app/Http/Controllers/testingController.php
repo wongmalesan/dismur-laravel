@@ -11,8 +11,10 @@ class testingController extends Controller
 {
     //
     public function Testing(Request $request){
-        $model = new member();
-        return $model->generateReferalId();
+        echo session()->get('login');
+        echo session()->get('id');
+        echo session()->get('username');
+        echo session()->get('role');
     }
 
     public function TestingPost(Request $request){

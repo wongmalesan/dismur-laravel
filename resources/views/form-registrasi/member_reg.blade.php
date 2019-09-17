@@ -3,7 +3,7 @@
 
 <!-- isi bagian judul halaman -->
 <!-- cara penulisan isi section yang pendek -->
-@section('judul_halaman', 'Registration')
+@section('judul_halaman', 'Registration As Member')
 
 
 <!-- isi bagian konten -->
@@ -28,8 +28,19 @@
                 </div>
 
                 <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" name="username" class="form-control" placeholder="Username ..">
+
+                    @if($errors->has('username'))
+                    <div class="text-danger">
+                        {{ $errors->first('username')}}
+                    </div>
+                    @endif
+                </div>
+
+                <div class="form-group">
                     <label>Email Member</label>
-                    <input class="form-control" name="email_member" type="email" placeholder="Email Admin">
+                    <input class="form-control" name="email_member" type="email" placeholder="Email ..">
 
                     @if($errors->has('email_member'))
                     <div class="text-danger">
@@ -62,7 +73,8 @@
 
                 <div class="form-group">
                     <label>Upload Foto</label>
-                    <input class="form-control" name="foto_member">
+                    <br>
+                    <input type="file" name="foto_member" class="mb-2">
 
                     @if($errors->has('foto_member'))
                     <div class="text-danger">

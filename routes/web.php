@@ -15,6 +15,7 @@ Route::get('/', 'dismurController@index');
 
 Route::get('/login', 'LoginController@index');
 Route::post('/login/proses', 'LoginController@check_login');
+Route::get('/login/logout', 'LoginController@logout');
 
 //Dasboard Merchant
 // Route::get('/dashboardmerchant', 'dashboardMerchantController@index');
@@ -55,6 +56,7 @@ Route::get('/admin/kategori', 'adminController@get_kategori');
 //==========
 
 //Form Registration
+Route::get('/reg', 'registrasiController@index');
 Route::get('/reg/form/member', 'registrasiController@member_index');
 Route::post('/reg/member/simpan', 'registrasiController@proses_add_member');
 Route::get('/reg/form/merchant', 'registrasiController@merchant_index');
@@ -82,7 +84,7 @@ Route::put('/merchant/produk/edit/update/{id}', 'merchantController@save_update_
 Route::get('/merchant/produk/hapus/{id}', 'merchantController@hapus_produk');
 
 //Member Page
-Route::get('/member', 'memberController@get_profile');
+Route::get('/member', 'memberController@index');
 Route::get('/member/profile', 'memberController@get_profile');
 Route::get('/member/profile/edit/{id}', 'memberController@edit_profile');
 Route::put('/member/profile/edit/update/{id}', 'memberController@save_update_profile');

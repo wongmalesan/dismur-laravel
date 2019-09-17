@@ -13,6 +13,7 @@ class member extends Model
     public $incrementing = false;
     private $id_member_new;
     private $url_img = 'main-asset-dismur/img/member';
+    public $new_id_member;
 
     public function get_all()
     {
@@ -113,6 +114,7 @@ class member extends Model
             $lastNumber = substr($last_id->id_member, '2');
         }
         $new_id = 'MB'.($lastNumber + 1 );
+        $this->new_id_member = $new_id;
         return $new_id;
     }
 

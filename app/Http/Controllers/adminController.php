@@ -8,6 +8,7 @@ use App\merchant;
 use App\produk;
 use App\admin;
 use App\member;
+use App\user_dismur;
 
 class adminController extends Controller
 {
@@ -16,6 +17,7 @@ class adminController extends Controller
     private $produk;
     private $admin;
     private $member;
+    private $user;
 
     /**
      * ArticlesController constructor.
@@ -27,10 +29,14 @@ class adminController extends Controller
         $this->produk = new produk();
         $this->admin = new admin();
         $this->member = new member();
+        $this->user = new user_dismur();
     }
 
     public function index()
     {
+        if($this->user->check_login_session_admin()){
+            return redirect('/login')->withError('Anda Harus Login')->withInput();
+        }
         $kp = $this->kategori->get_kategori();
         $m = $this->merchant->get_all();
         return view('admin')->with('kp', $kp)->with('m', $m);

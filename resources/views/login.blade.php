@@ -31,19 +31,14 @@
                         <!-- Nested Row within Card Body -->
 
                         {{-- menampilkan error validasi --}}
-                        @if (count($errors) > 0)
-                        <div class="alert alert-success alert-block">
-                            <button type="button" class="close" data-dismiss="alert">×</button>
-                            <strong>
-                                @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                                @endforeach
-                            </strong>
-                        </div>
+                        @if (session('error'))
+                            <div class="alert alert-danger">{{ session('error') }}</div>
                         @endif
 
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                            <div class="col-lg-6 d-none d-lg-block">
+                                <img style="width:100%; margin-top:20%;" src="{{ url('/main-asset-dismur/logo/logo 1.png') }}">
+                            </div>
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
@@ -68,11 +63,11 @@
                                         </div>
                                     </form>
                                     <hr>
-                                    <div class="text-center">
+                                    <!-- <div class="text-center">
                                         <a class="small" href="forgot-password.html">Forgot Password?</a>
-                                    </div>
+                                    </div> -->
                                     <div class="text-center">
-                                        <a class="small" href="register.html">Create an Account!</a>
+                                        <a class="small" href="/reg">Create an Account!</a>
                                     </div>
                                 </div>
                             </div>

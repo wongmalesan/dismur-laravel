@@ -3,7 +3,7 @@
 
 <!-- isi bagian judul halaman -->
 <!-- cara penulisan isi section yang pendek -->
-@section('judul_halaman', 'Registration')
+@section('judul_halaman', 'Registration As Merchant')
 
 
 <!-- isi bagian konten -->
@@ -24,6 +24,17 @@
                     @if($errors->has('nama_merchant'))
                     <div class="text-danger">
                         {{ $errors->first('nama_merchant')}}
+                    </div>
+                    @endif
+                </div>
+
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" name="username" class="form-control" placeholder="Username ..">
+
+                    @if($errors->has('username'))
+                    <div class="text-danger">
+                        {{ $errors->first('username')}}
                     </div>
                     @endif
                 </div>
@@ -61,7 +72,7 @@
                     @endif
                 </div>
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label>Map Location</label>
                     <input type="text" name="map_location" class="form-control" placeholder="URL Map Location ..">
 
@@ -70,7 +81,7 @@
                         {{ $errors->first('map_location')}}
                     </div>
                     @endif
-                </div>
+                </div> -->
 
                 <div class="form-group">
                     <label>Logo</label>

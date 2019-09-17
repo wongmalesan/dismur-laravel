@@ -3,7 +3,7 @@
 
 <!-- isi bagian judul halaman -->
 <!-- cara penulisan isi section yang pendek -->
-@section('judul_halaman', 'Dashboard Admin Merchant')
+@section('judul_halaman', 'Dashboard Admin Member')
 
 
 <!-- isi bagian konten -->

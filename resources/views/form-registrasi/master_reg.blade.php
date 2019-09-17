@@ -36,7 +36,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">
+                        <h1 class="h1 mb-0 text-gray-800" style="margin:auto;">
                             @yield('judul_halaman')
                         </h1>
                     </div>
