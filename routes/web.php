@@ -90,6 +90,9 @@ Route::get('/member/profile/edit/{id}', 'memberController@edit_profile');
 Route::put('/member/profile/edit/update/{id}', 'memberController@save_update_profile');
 //--> Wishlist
 Route::get('/member/wishlist', 'memberController@get_wishlist');
+Route::get('/member/wishlist/hapus/{id_produk}', 'memberController@delete_wishlist');
+
+Route::get('/member/wishlist/add/{id_produk}', 'wishtlistController@add');
 
 
 

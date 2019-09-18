@@ -18,8 +18,17 @@ class wishlist extends Model
 
     public function get_by_filter()
     {   
-        $idmember = '';
-        return wishlist::where('id_member', $idmember)->get();
+        $idmember = session()->get('id');
+        $res = wishlist::where('id_member', $idmember)->get();
+        return $res;
+    }
+
+    public function get_by_filterx()
+    {   
+        $idmember = session()->get('id');
+        $res = wishlist::where('id_member', $idmember)
+                ->leftJoin('produks', 'wishlists.id_produk', '=', 'produks.id_produk')->get();
+        return $res;
     }
 
     public function searchs($ids)
@@ -27,14 +36,14 @@ class wishlist extends Model
         return wishlist::find($ids);
     }
 
-    public function stores($request)
+    public function stores($id_produk)
     {
         $id = $this->generateId();
         $this->id_wishlist_new = $id;
         wishlist::create([
             'id_wishlist' => $id,
-            'id_member' => $request->id_member,
-            'id_produk' => $request->id_produk,
+            'id_member' => session()->get('id'),
+            'id_produk' => $id_produk,
             'tanggal_wish' => now(),
         ]);
     }

@@ -11,10 +11,11 @@ class testingController extends Controller
 {
     //
     public function Testing(Request $request){
-        echo session()->get('login');
-        echo session()->get('id');
-        echo session()->get('username');
-        echo session()->get('role');
+        // echo session()->get('login');
+        // echo session()->get('id');
+        // echo session()->get('username');
+        // echo session()->get('role');
+        return view('test');
     }
 
     public function TestingPost(Request $request){

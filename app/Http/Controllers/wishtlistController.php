@@ -17,16 +17,20 @@ class wishtlistController extends Controller
 
     public function get()
     {
-        $this->instance->get_by_filter();
+        //$this->instance->get_by_filter();
+        $res = $this->instance->get_by_filterx();
+        return view('member-page.member_wishlist')->with('param', $res);
     }
 
-    public function add(Request $request)
+    public function add($id_produk)
     {
-        $this->instance->stores($request);
+        $this->instance->stores($id_produk);
+        return back();
     }
 
     public function delete($id)
     {
         $this->instance->deletes($id);
+        return back();
     }
 }
